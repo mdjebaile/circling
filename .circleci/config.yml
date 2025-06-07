@@ -13,26 +13,7 @@ jobs:
           name: Test
           command: mvn test
 
-  backend_deploy:
-    docker:
-      - image: cimg/python:3.10
-    steps:
-      - run:
-          name: deploy
-          command: |
-            curl ${RENDER_DEPLOY_HOOK}  # stored on CircleCI
-
 workflows:
-  build-and-test:
+  build-and-test-workflow:
     jobs:
       - build-and-test
-  continuous_integration:
-    jobs:
-      - build-and-test
-      - backend_deploy: # new job
-          filters:
-            branches:
-              only:
-                - main  # only run this job for our main branch
-          requires:
-            - build-and-test  # this job must be success
