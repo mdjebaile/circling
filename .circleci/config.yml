@@ -13,8 +13,9 @@ jobs:
           name: Test
           command: mvn test
 
-
   backend_deploy:
+    docker:
+      - image: cimg/python:3.10
     steps:
       - run:
           name: deploy
