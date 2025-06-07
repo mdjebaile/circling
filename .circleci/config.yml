@@ -15,10 +15,6 @@ jobs:
 
 
   backend_deploy:
-    docker:
-      - image: cimg/python:3.10
-
-    working_directory: ~/quotes/backend
 
     steps:
       - run:
